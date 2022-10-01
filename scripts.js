@@ -4,24 +4,29 @@ var todoList = [
   { task: "Completar o desafio de Vue JS com excelência", state: false },
 ];
 
-const TodoAppList = {
+const todosApp = {
   data() {
     return {
-      todoList: window.todoList,
+      todoApp: window.todoList,
       newTask: {},
     };
   },
 
   methods: {
     clearTask() {
-      this.todoList = {};
-      console.log(this.todoList);
+      this.todoApp = [];
     },
     addTask() {
-      // var state = { state: false };
-      this.todoList.push(this.newTask);
+      if (this.newTask.task) {
+        var state = { state: false };
+        this.todoApp.push({ ...this.newTask, ...state });
+
+        this.newTask = {};
+      } else {
+        alert("Preenche qualquer coisa");
+      }
     },
   },
 };
 
-Vue.createApp(TodoAppList).mount("#app");
+Vue.createApp(todosApp).mount("#app");
