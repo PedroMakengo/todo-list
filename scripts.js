@@ -1,14 +1,14 @@
 var todoList = [
-  { task: "Aprender HTML, CSS e JavaScript", state: false },
-  { task: "Aprender o básico de Vue JS", state: false },
-  { task: "Completar o desafio de Vue JS com excelência", state: false },
+  { task: "Aprender HTML, CSS e JavaScript", done: false },
+  { task: "Aprender o básico de Vue JS", done: false },
+  { task: "Completar o desafio de Vue JS com excelência", done: false },
 ];
 
 const todosApp = {
   data() {
     return {
       todoApp: window.todoList,
-      newTask: {},
+      newTask: { done: false },
     };
   },
 
@@ -18,10 +18,10 @@ const todosApp = {
     },
     addTask() {
       if (this.newTask.task) {
-        var state = { state: false };
-        this.todoApp.push({ ...this.newTask, ...state });
+        this.todoApp.push(this.newTask);
 
-        this.newTask = {};
+        this.newTask = { done: false };
+        localStorage.setItem("todos", JSON.stringify(this.todoApp));
       } else {
         alert("Preenche qualquer coisa");
       }

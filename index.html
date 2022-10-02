@@ -21,8 +21,8 @@
         <div class="all-todos" v-for="todo in todoApp">
           <div
             class="single-todo"
-            @click="todo.state = !todo.state"
-            :class="{done: todo.state}"
+            @click="todo.done = !todo.done"
+            :class="{done: todo.done}"
           >
             <p>{{ todo.task }}</p>
           </div>
