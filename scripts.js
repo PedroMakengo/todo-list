@@ -25,6 +25,9 @@ const todosApp = {
   },
   created() {
     this.todoApp = localStorage.getItem('todos') ? JSON.parse(this.todos) : this.todoApp
+  },
+  update() {
+    localStorage.setItem("todos", JSON.stringify(this.todos))
   }
 };
 
